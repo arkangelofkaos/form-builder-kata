@@ -2,6 +2,7 @@ import {useCallback, useState} from "react";
 import {createFormElementDefinition} from "./form/FormElementDefinition";
 import {QuestionPreview} from "./form/preview/QuestionPreview";
 import QuestionBuilder from "./form/builder/QuestionBuilder";
+import styled from "styled-components";
 
 const App = () => {
     const [questionNumber, setQuestionNumber] = useState(1)
@@ -24,7 +25,7 @@ const App = () => {
 
     const formElementDefinitions = Object.values(definitions);
     return (
-        <div className="App">
+        <FormBuilderApp className="App">
             <h1>Form Builder</h1>
             <button onClick={addNewFormElement} data-testid="add-form-element-button">
                 Add Form Element
@@ -47,8 +48,14 @@ const App = () => {
                     })
                 }
             </div>
-        </div>
+        </FormBuilderApp>
     );
 }
+
+const FormBuilderApp = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`
 
 export default App;
