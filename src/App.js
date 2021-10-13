@@ -1,9 +1,10 @@
 import {useCallback, useState} from "react";
+import {createFormElementDefinition} from "./form/FormElementDefinition";
 
 const App = () => {
     const [formElements, setFormElements] = useState([])
     const addElement = useCallback(() => {
-        setFormElements(e => [...e, {}])
+        setFormElements(e => [...e, createFormElementDefinition()])
     }, [setFormElements])
 
     return (
