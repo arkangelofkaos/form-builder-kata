@@ -1,8 +1,8 @@
 import QuestionBuilder from "./QuestionBuilder";
 import styled from "styled-components";
 
-export const QuestionBuilderList = ({definitions, setDefinition}) => {
-    return <BuilderList data-testid="form-builder">
+const Editor = ({definitions, setDefinition}) => {
+    return <FormBuilder data-testid="form-builder">
         <h2>Editor</h2>
         {
             definitions.map((definition, index) => {
@@ -12,11 +12,13 @@ export const QuestionBuilderList = ({definitions, setDefinition}) => {
                                         definition={definition}/>
             })
         }
-    </BuilderList>
+    </FormBuilder>
 }
 
-const BuilderList = styled.div`
-    .question-builder {
-      margin-bottom: 24px;
-    }
+const FormBuilder = styled.div`
+  .question-builder {
+    margin-bottom: 36px;
+  }
 `
+
+export default Editor

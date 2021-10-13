@@ -1,8 +1,8 @@
 import {useCallback, useState} from "react";
 import {createFormElementDefinition} from "./form/FormElementDefinition";
-import {QuestionPreview} from "./form/preview/QuestionPreview";
 import styled from "styled-components";
-import {QuestionBuilderList} from "./form/builder/QuestionBuilderList";
+import Editor from "./form/editor/Editor";
+import FormPreview from "./form/preview/FormPreview";
 
 const App = () => {
     const [questionNumber, setQuestionNumber] = useState(1)
@@ -18,8 +18,8 @@ const App = () => {
     }, [setDefinitions])
 
     const addNewFormElement = useCallback(() => {
-        const questionName = `Question ${questionNumber}`
-        setDefinition(questionNumber, createFormElementDefinition(questionNumber, questionName))
+        const defaultQuestionName = `Question ${questionNumber}`
+        setDefinition(questionNumber, createFormElementDefinition(questionNumber, defaultQuestionName))
         setQuestionNumber(n => n + 1)
     }, [questionNumber, setQuestionNumber, setDefinition])
 
@@ -31,15 +31,8 @@ const App = () => {
                 Add Form Element
             </button>
             <SideBySide>
-                <QuestionBuilderList definitions={formElementDefinitions} setDefinition={setDefinition}/>
-                <div data-testid="form-preview">
-                    <h2>Preview</h2>
-                    {
-                        formElementDefinitions.map((definition, index) => {
-                            return <QuestionPreview key={`question-${index}`} definition={definition}/>
-                        })
-                    }
-                </div>
+                <Editor definitions={formElementDefinitions} setDefinition={setDefinition}/>
+                <FormPreview definitions={formElementDefinitions}/>
             </SideBySide>
         </FormBuilderApp>
     );

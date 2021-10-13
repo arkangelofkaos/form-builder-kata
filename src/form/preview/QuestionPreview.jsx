@@ -1,7 +1,7 @@
-export const QuestionPreview = ({definition}) => {
+export const QuestionPreview = ({className, definition}) => {
     const {name, label, placeholder} = definition
 
-    return <div data-testid="question-preview">
+    return <div className={className} data-testid="question-preview">
         <div>{name}</div>
         <label>
             {label}
