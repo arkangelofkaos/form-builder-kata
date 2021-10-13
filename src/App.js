@@ -1,6 +1,5 @@
 import {useCallback, useState} from "react";
 import {createFormElementDefinition} from "./form/FormElementDefinition";
-import {FormElement} from "./form/FormElement";
 
 const App = () => {
     const [definitions, setDefinitions] = useState([])
@@ -14,10 +13,19 @@ const App = () => {
             <button onClick={addElement} data-testid="add-form-element-button">
                 Add Form Element
             </button>
-            <div>
+            <div data-testid="form-builder">
+                <h2>Editor</h2>
                 {
                     definitions.map((definition, index) => {
-                        return <FormElement key={`form-element-${index}`} definition={definition}/>
+                        return <div key={`form-element-${index}`} data-testid="question-builder"/>
+                    })
+                }
+            </div>
+            <div data-testid="form-preview">
+                <h2>Preview</h2>
+                {
+                    definitions.map((definition, index) => {
+                        return <div key={`question-${index}`} data-testid="question-preview"/>
                     })
                 }
             </div>

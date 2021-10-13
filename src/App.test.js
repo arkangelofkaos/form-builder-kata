@@ -1,4 +1,4 @@
-import {fireEvent, render, screen} from '@testing-library/react';
+import {fireEvent, render, screen, within} from '@testing-library/react';
 import App from './App';
 
 it('renders Form Builder app', () => {
@@ -7,10 +7,14 @@ it('renders Form Builder app', () => {
   expect(titleElement).toBeInTheDocument();
 });
 
-it("clicking the AddFormElement button adds a new form element", async () => {
+it("clicking the AddFormElement button adds a new form builder element and a preview of the new question", async () => {
   render(<App />);
   const button = screen.getByTestId("add-form-element-button");
   fireEvent.click(button)
-  const elements = screen.queryAllByTestId("form-element")
-  expect(elements).toHaveLength(1)
+
+  const formBuildingElements = within(screen.queryByTestId("form-builder")).queryAllByTestId("question-builder")
+  expect(formBuildingElements).toHaveLength(1)
+
+  const previewQuestions = within(screen.queryByTestId("form-preview")).queryAllByTestId("question-preview")
+  expect(previewQuestions).toHaveLength(1)
 });
