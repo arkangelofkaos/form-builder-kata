@@ -3,18 +3,28 @@ import {QuestionPreview} from "./QuestionPreview";
 
 describe("QuestionPreview", () => {
     describe("given a form element definition", () => {
-        const definition = {label: "Your Answer:", name: "", placeholder: "hello, world!"}
+        const testDefinition = {
+            name: "This is an example question, what do you think?",
+            label: "Your Answer:",
+            placeholder: "hello, world!"
+        }
 
         it("renders the placeholder", async () => {
-            render(<QuestionPreview definition={definition} />);
-            const formInput = screen.getByPlaceholderText("hello, world!");
+            render(<QuestionPreview definition={testDefinition} />);
+            const formInput = screen.getByPlaceholderText(testDefinition.placeholder);
             expect(formInput).toBeInTheDocument();
         });
 
         it("renders the label", async () => {
-            render(<QuestionPreview definition={definition} />);
-            const labelledComponent = screen.getByText("Your Answer:");
+            render(<QuestionPreview definition={testDefinition} />);
+            const labelledComponent = screen.getByText(testDefinition.label);
             expect(labelledComponent).toBeInTheDocument();
+        });
+
+        it("renders the name", async () => {
+            render(<QuestionPreview definition={testDefinition} />);
+            const questionName = screen.getByText(testDefinition.name);
+            expect(questionName).toBeInTheDocument();
         });
     });
 

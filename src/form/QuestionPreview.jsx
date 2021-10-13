@@ -1,8 +1,11 @@
 export const QuestionPreview = ({definition}) => {
-    const {label, placeholder} = definition
+    const {name, label, placeholder} = definition
 
-    return <label>
-        {label}
-        <input data-testid="question-preview" placeholder={placeholder}/>
-    </label>
+    return <div>
+        <div>{name}</div>
+        <label>
+            {label}
+            <input data-testid="question-preview" placeholder={placeholder}/>
+        </label>
+    </div>
 }
