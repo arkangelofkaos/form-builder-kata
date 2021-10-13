@@ -1,6 +1,6 @@
 import {useCallback} from "react";
 
-const QuestionBuilder = ({definition, setDefinition}) => {
+const QuestionBuilder = ({className, definition, setDefinition}) => {
     const setQuestionName = useCallback((e) => {
         const newQuestionName = e.target.value
         setDefinition(definition.id, {
@@ -9,9 +9,9 @@ const QuestionBuilder = ({definition, setDefinition}) => {
         })
     }, [definition, setDefinition])
 
-    return <div data-testid="question-builder">
+    return <div className={className} data-testid="question-builder">
         <label>
-            Question Name:
+            <div>Question Name</div>
             <input data-testid="name-input"
                    value={definition.name}
                    onChange={setQuestionName}/>

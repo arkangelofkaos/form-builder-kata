@@ -1,8 +1,8 @@
 import {useCallback, useState} from "react";
 import {createFormElementDefinition} from "./form/FormElementDefinition";
 import {QuestionPreview} from "./form/preview/QuestionPreview";
-import QuestionBuilder from "./form/builder/QuestionBuilder";
 import styled from "styled-components";
+import {QuestionBuilderList} from "./form/builder/QuestionBuilderList";
 
 const App = () => {
     const [questionNumber, setQuestionNumber] = useState(1)
@@ -31,16 +31,7 @@ const App = () => {
                 Add Form Element
             </button>
             <SideBySide>
-                <div data-testid="form-builder">
-                    <h2>Editor</h2>
-                    {
-                        formElementDefinitions.map((definition, index) => {
-                            return <QuestionBuilder key={`form-element-${index}`}
-                                                    setDefinition={setDefinition}
-                                                    definition={definition}/>
-                        })
-                    }
-                </div>
+                <QuestionBuilderList definitions={formElementDefinitions} setDefinition={setDefinition}/>
                 <div data-testid="form-preview">
                     <h2>Preview</h2>
                     {
