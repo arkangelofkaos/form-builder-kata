@@ -3,10 +3,10 @@ import {createFormElementDefinition} from "./form/FormElementDefinition";
 import {FormElement} from "./form/FormElement";
 
 const App = () => {
-    const [formElements, setFormElements] = useState([])
+    const [definitions, setDefinitions] = useState([])
     const addElement = useCallback(() => {
-        setFormElements(e => [...e, createFormElementDefinition()])
-    }, [setFormElements])
+        setDefinitions(e => [...e, createFormElementDefinition()])
+    }, [setDefinitions])
 
     return (
         <div className="App">
@@ -16,8 +16,8 @@ const App = () => {
             </button>
             <div>
                 {
-                    formElements.map((formElement, index) => {
-                        return <FormElement key={`form-element-${index}`}/>
+                    definitions.map((definition, index) => {
+                        return <FormElement key={`form-element-${index}`} definition={definition}/>
                     })
                 }
             </div>
