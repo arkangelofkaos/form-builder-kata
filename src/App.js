@@ -1,5 +1,6 @@
 import {useCallback, useState} from "react";
 import {createFormElementDefinition} from "./form/FormElementDefinition";
+import {FormElement} from "./form/FormElement";
 
 const App = () => {
     const [formElements, setFormElements] = useState([])
@@ -16,7 +17,7 @@ const App = () => {
             <div>
                 {
                     formElements.map((formElement, index) => {
-                        return <input key={`form-element-${index}`} data-testid="form-element"/>
+                        return <FormElement key={`form-element-${index}`}/>
                     })
                 }
             </div>
