@@ -1,6 +1,6 @@
 import {useCallback, useState} from "react";
 
-function App() {
+const App = () => {
     const [formElements, setFormElements] = useState([])
     const addElement = useCallback(() => {
         setFormElements(e => [...e, {}])
