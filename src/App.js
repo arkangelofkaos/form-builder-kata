@@ -1,5 +1,6 @@
 import {useCallback, useState} from "react";
 import {createFormElementDefinition} from "./form/FormElementDefinition";
+import {QuestionPreview} from "./form/QuestionPreview";
 
 const App = () => {
     const [definitions, setDefinitions] = useState([])
@@ -25,7 +26,7 @@ const App = () => {
                 <h2>Preview</h2>
                 {
                     definitions.map((definition, index) => {
-                        return <div key={`question-${index}`} data-testid="question-preview"/>
+                        return <QuestionPreview key={`question-${index}`} definition={definition}/>
                     })
                 }
             </div>
