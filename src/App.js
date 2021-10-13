@@ -30,24 +30,26 @@ const App = () => {
             <button onClick={addNewFormElement} data-testid="add-form-element-button">
                 Add Form Element
             </button>
-            <div data-testid="form-builder">
-                <h2>Editor</h2>
-                {
-                    formElementDefinitions.map((definition, index) => {
-                        return <QuestionBuilder key={`form-element-${index}`}
-                                                setDefinition={setDefinition}
-                                                definition={definition}/>
-                    })
-                }
-            </div>
-            <div data-testid="form-preview">
-                <h2>Preview</h2>
-                {
-                    formElementDefinitions.map((definition, index) => {
-                        return <QuestionPreview key={`question-${index}`} definition={definition}/>
-                    })
-                }
-            </div>
+            <SideBySide>
+                <div data-testid="form-builder">
+                    <h2>Editor</h2>
+                    {
+                        formElementDefinitions.map((definition, index) => {
+                            return <QuestionBuilder key={`form-element-${index}`}
+                                                    setDefinition={setDefinition}
+                                                    definition={definition}/>
+                        })
+                    }
+                </div>
+                <div data-testid="form-preview">
+                    <h2>Preview</h2>
+                    {
+                        formElementDefinitions.map((definition, index) => {
+                            return <QuestionPreview key={`question-${index}`} definition={definition}/>
+                        })
+                    }
+                </div>
+            </SideBySide>
         </FormBuilderApp>
     );
 }
@@ -56,6 +58,12 @@ const FormBuilderApp = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+`
+
+const SideBySide = styled.div`
+  display: flex;
+  width: 100%;
+  justify-content: space-evenly;
 `
 
 export default App;
