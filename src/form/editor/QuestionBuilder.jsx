@@ -55,7 +55,7 @@ const BuilderContainer = styled.div`
   flex-direction: column;
   border-radius: 4px;
   background-color: skyblue;
-  padding: 12px 24px;
+  padding: 24px 32px;
   
   .heading {
     font-weight: 600;
