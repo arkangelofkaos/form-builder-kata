@@ -28,7 +28,7 @@ const App = () => {
         <FormBuilderApp className="App">
             <h1>Form Builder</h1>
             <button onClick={addNewFormElement} data-testid="add-form-element-button">
-                Add Form Element
+                Add Question
             </button>
             <SideBySide>
                 <Editor definitions={formElementDefinitions} setDefinition={setDefinition}/>
