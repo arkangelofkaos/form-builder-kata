@@ -1,4 +1,5 @@
 import {useCallback} from "react";
+import styled from "styled-components";
 
 const QuestionBuilder = ({className, definition, setDefinition}) => {
     const onTypeChange = useCallback((e) => {
@@ -25,27 +26,52 @@ const QuestionBuilder = ({className, definition, setDefinition}) => {
         })
     }, [definition, setDefinition])
 
-    return <div className={className} data-testid="question-builder">
-        <label>
-            Question Type:
+    return <BuilderContainer className={className} data-testid="question-builder">
+        <div className="heading">Question #{definition.id}</div>
+        <label className="type-editor">
+            Type
             <select data-testid="type-select" onChange={onTypeChange}>
                 <option value="text">Text</option>
                 <option value="checkbox">Checkbox</option>
             </select>
         </label>
-        <label>
-            <div>Question Name</div>
+        <label className="name-editor">
+            <div>Name</div>
             <input data-testid="name-input"
                    value={definition.name}
                    onChange={setQuestionName}/>
         </label>
-        <label>
-            <div>Question Label</div>
+        <label className="label-editor">
+            <div>Label</div>
             <input data-testid="label-input"
                    value={definition.label}
                    onChange={setLabel}/>
         </label>
-    </div>
+    </BuilderContainer>
 }
+
+const BuilderContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  border-radius: 4px;
+  background-color: skyblue;
+  padding: 12px 24px;
+  
+  .heading {
+    font-weight: 600;
+    margin-bottom: 12px;
+  }
+  
+  .type-editor {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 8px;
+  }
+  
+  .name-editor, .label-editor {
+    margin-bottom: 6px;
+  }
+`
 
 export default QuestionBuilder
