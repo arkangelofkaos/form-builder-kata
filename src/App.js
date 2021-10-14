@@ -47,6 +47,7 @@ const FormBuilderApp = styled.div`
 const SideBySide = styled.div`
   display: flex;
   width: 100%;
+  flex-wrap: wrap;
   justify-content: space-evenly;
 `
 
