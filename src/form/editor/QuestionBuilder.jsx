@@ -1,6 +1,14 @@
 import {useCallback} from "react";
 
 const QuestionBuilder = ({className, definition, setDefinition}) => {
+    const onTypeChange = useCallback((e) => {
+        const newType = e.target.value
+        setDefinition(definition.id, {
+            ...definition,
+            type: newType
+        })
+    }, [definition, setDefinition])
+
     const setQuestionName = useCallback((e) => {
         const newQuestionName = e.target.value
         setDefinition(definition.id, {
@@ -9,11 +17,11 @@ const QuestionBuilder = ({className, definition, setDefinition}) => {
         })
     }, [definition, setDefinition])
 
-    const onTypeChange = useCallback((e) => {
-        const newType = e.target.value
+    const setLabel = useCallback((e) => {
+        const newLabel = e.target.value
         setDefinition(definition.id, {
             ...definition,
-            type: newType
+            label: newLabel
         })
     }, [definition, setDefinition])
 
@@ -30,6 +38,12 @@ const QuestionBuilder = ({className, definition, setDefinition}) => {
             <input data-testid="name-input"
                    value={definition.name}
                    onChange={setQuestionName}/>
+        </label>
+        <label>
+            <div>Question Label</div>
+            <input data-testid="label-input"
+                   value={definition.label}
+                   onChange={setLabel}/>
         </label>
     </div>
 }
