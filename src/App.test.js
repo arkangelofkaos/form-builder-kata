@@ -25,3 +25,17 @@ it("adds a new question to the form and configures the question name", async () 
   userEvent.type(within(builder).getByTestId("name-input"), "What is the Matrix?")
   expect(within(previewQuestions).getByText("What is the Matrix?")).toBeInTheDocument()
 });
+
+it("can add a checkbox question", async () => {
+  render(<App />);
+  const button = screen.getByTestId("add-form-element-button");
+  fireEvent.click(button)
+
+  const builder = within(screen.queryByTestId("form-builder")).getByTestId("question-builder")
+
+  fireEvent.change(within(builder).getByTestId("type-select"), {target: {value: "checkbox"}})
+
+  const previewQuestions = within(screen.queryByTestId("form-preview")).getByTestId("question-preview")
+  const checkbox = within(previewQuestions).getByRole("checkbox")
+  expect(checkbox).toBeInTheDocument()
+});

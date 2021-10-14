@@ -9,7 +9,22 @@ const QuestionBuilder = ({className, definition, setDefinition}) => {
         })
     }, [definition, setDefinition])
 
+    const onTypeChange = useCallback((e) => {
+        const newType = e.target.value
+        setDefinition(definition.id, {
+            ...definition,
+            type: newType
+        })
+    }, [definition, setDefinition])
+
     return <div className={className} data-testid="question-builder">
+        <label>
+            Question Type:
+            <select data-testid="type-select" onChange={onTypeChange}>
+                <option value="text">Text</option>
+                <option value="checkbox">Checkbox</option>
+            </select>
+        </label>
         <label>
             <div>Question Name</div>
             <input data-testid="name-input"

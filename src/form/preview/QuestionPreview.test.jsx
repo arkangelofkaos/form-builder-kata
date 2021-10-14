@@ -26,6 +26,12 @@ describe("QuestionPreview", () => {
             const questionName = screen.getByText(testDefinition.name);
             expect(questionName).toBeInTheDocument();
         });
+
+        it("renders a checkbox if it is a checkbox type", async () => {
+            render(<QuestionPreview definition={{...testDefinition, type: "checkbox"}} />);
+            const checkbox = screen.getByRole("checkbox");
+            expect(checkbox).toBeInTheDocument();
+        });
     });
 
 });
