@@ -5,6 +5,7 @@ describe("FormElementDefinition", () => {
         const defintion = createFormElementDefinition(0);
         expect(defintion).toEqual({
             id: 0,
+            type: "text",
             label: "",
             name: "",
             placeholder: "",
