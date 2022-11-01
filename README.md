@@ -1,6 +1,6 @@
 # Form Builder Kata
 
-This is an exercise of reacting a React Form Builder.
+This is an exercise of creacting a React Form Builder.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
